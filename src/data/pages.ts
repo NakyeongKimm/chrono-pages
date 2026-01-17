@@ -74,7 +74,11 @@ export const pagesData: PageData[] = [
       { name: "Tahu Goreng", image: tofu3 },
       { name: "Tofu Tikka Masala", image: tofu4 },
       { name: "Tofu Lasagna", image: tofu5 },
-      { name: "Tofu Steak", image: tofu6, url: "https://cookingwithayeh.com/tofu-steak/" },
+      {
+        name: "Tofu Steak",
+        image: tofu6,
+        url: "https://cookingwithayeh.com/tofu-steak/",
+      },
     ],
   },
   {
