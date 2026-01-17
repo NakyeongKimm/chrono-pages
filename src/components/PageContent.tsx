@@ -34,10 +34,7 @@ export const PageContent = ({ page, isActive }: PageContentProps) => {
 
     if (page.highlightedWord) {
       return (
-        <h1
-          className={`page-heading `}
-          style={{ animationDelay: "0.2s" }}
-        >
+        <h1 className={`page-heading `} style={{ animationDelay: "0.2s" }}>
           {page.title}{" "}
           <span className="page-highlight">{page.highlightedWord}</span>
         </h1>
@@ -45,19 +42,14 @@ export const PageContent = ({ page, isActive }: PageContentProps) => {
     }
 
     return (
-      <h1
-        className={`page-heading `}
-        style={{ animationDelay: "0.2s" }}
-      >
+      <h1 className={`page-heading `} style={{ animationDelay: "0.2s" }}>
         {page.title}
       </h1>
     );
   };
 
   return (
-    <div
-      className={`page-container ${themeClass} `}
-    >
+    <div className={`page-container ${themeClass} `}>
       <div className="max-w-5xl mx-auto text-center w-full">
         {/* Theme indicator */}
         <div
@@ -72,10 +64,7 @@ export const PageContent = ({ page, isActive }: PageContentProps) => {
 
         {/* Subtitle */}
         {page.subtitle && (
-          <p
-            className={`page-subheading `}
-            style={{ animationDelay: "0.15s" }}
-          >
+          <p className={`page-subheading `} style={{ animationDelay: "0.15s" }}>
             {page.subtitle}
           </p>
         )}
@@ -85,10 +74,7 @@ export const PageContent = ({ page, isActive }: PageContentProps) => {
 
         {/* Question (if no title) */}
         {!page.title && page.question && (
-          <h1
-            className={`page-heading `}
-            style={{ animationDelay: "0.2s" }}
-          >
+          <h1 className={`page-heading `} style={{ animationDelay: "0.2s" }}>
             {page.question}
           </h1>
         )}
@@ -110,16 +96,11 @@ export const PageContent = ({ page, isActive }: PageContentProps) => {
         )}
 
         {/* Interactive Memory Cards */}
-        {page.prompts && (
-          <MemoryCards prompts={page.prompts} />
-        )}
+        {page.prompts && <MemoryCards prompts={page.prompts} />}
 
         {/* Fun facts list */}
         {page.funFacts && (
-          <div
-            className={`mt-8 space-y-3 `}
-            style={{ animationDelay: "0.4s" }}
-          >
+          <div className={`mt-8 space-y-3 `} style={{ animationDelay: "0.4s" }}>
             {page.funFacts.map((fact, index) => (
               <div
                 key={index}
@@ -135,8 +116,9 @@ export const PageContent = ({ page, isActive }: PageContentProps) => {
         {/* Main Image */}
         {page.imageUrl && !page.tofuDishes && (
           <div
-            className={`mt-10 mx-auto ${page.prompts || page.funFacts ? "max-w-[180px]" : "max-w-md"
-              } aspect-square `}
+            className={`mt-10 mx-auto ${
+              page.prompts || page.funFacts ? "max-w-[180px]" : "max-w-md"
+            } aspect-square `}
             style={{ animationDelay: "0.5s" }}
           >
             <img
@@ -211,8 +193,9 @@ const MemoryCards = ({ prompts }: { prompts: string[] }) => {
           <div
             key={index}
             onClick={() => handleCardClick(index)}
-            className={`memory-card ${revealedCards.has(index) ? "revealed" : ""
-              }`}
+            className={`memory-card ${
+              revealedCards.has(index) ? "revealed" : ""
+            }`}
           >
             {revealedCards.has(index) ? (
               <p className="text-base md:text-lg font-medium">{prompt}</p>
