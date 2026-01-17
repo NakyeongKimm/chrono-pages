@@ -1,5 +1,6 @@
 import { PageData, Theme } from "@/types/page";
-import { Clock, Sun, Sparkles, Star } from "lucide-react";
+import { Clock, Sun, Sparkles, Star, HelpCircle } from "lucide-react";
+import { useState } from "react";
 
 interface PageContentProps {
   page: PageData;
@@ -108,18 +109,9 @@ export const PageContent = ({ page, isActive }: PageContentProps) => {
           </p>
         )}
 
-        {/* Prompts list */}
+        {/* Interactive Memory Cards */}
         {page.prompts && (
-          <div
-            className={`mt-8 space-y-2 `}
-            style={{ animationDelay: "0.4s" }}
-          >
-            {page.prompts.map((prompt, index) => (
-              <div key={index} className="page-list-item">
-                {prompt}
-              </div>
-            ))}
-          </div>
+          <MemoryCards prompts={page.prompts} />
         )}
 
         {/* Fun facts list */}
@@ -143,7 +135,7 @@ export const PageContent = ({ page, isActive }: PageContentProps) => {
         {/* Main Image */}
         {page.imageUrl && !page.tofuDishes && (
           <div
-            className={`mt-10 mx-auto ${page.prompts || page.funFacts ? "max-w-xs" : "max-w-md"
+            className={`mt-10 mx-auto ${page.prompts || page.funFacts ? "max-w-[180px]" : "max-w-md"
               } aspect-square `}
             style={{ animationDelay: "0.5s" }}
           >
@@ -165,6 +157,7 @@ export const PageContent = ({ page, isActive }: PageContentProps) => {
               {page.tofuDishes.map((dish, index) => (
                 <div
                   key={index}
+                  onClick={() => dish.url && window.open(dish.url, "_blank")}
                   className="rounded-2xl overflow-hidden shadow-lg hover:scale-105 transition-transform cursor-pointer"
                   style={{
                     backgroundColor: "hsl(var(--page-accent-light) / 0.2)",
@@ -194,6 +187,40 @@ export const PageContent = ({ page, isActive }: PageContentProps) => {
             )}
           </>
         )}
+      </div>
+    </div>
+  );
+};
+
+// Interactive Memory Cards Component
+const MemoryCards = ({ prompts }: { prompts: string[] }) => {
+  const [revealedCards, setRevealedCards] = useState<Set<number>>(new Set());
+
+  const handleCardClick = (index: number) => {
+    setRevealedCards((prev) => {
+      const newSet = new Set(prev);
+      newSet.add(index);
+      return newSet;
+    });
+  };
+
+  return (
+    <div className="mt-8">
+      <div className="flex gap-6 justify-center px-4">
+        {prompts.map((prompt, index) => (
+          <div
+            key={index}
+            onClick={() => handleCardClick(index)}
+            className={`memory-card ${revealedCards.has(index) ? "revealed" : ""
+              }`}
+          >
+            {revealedCards.has(index) ? (
+              <p className="text-base md:text-lg font-medium">{prompt}</p>
+            ) : (
+              <HelpCircle className="w-12 h-12 opacity-50" />
+            )}
+          </div>
+        ))}
       </div>
     </div>
   );

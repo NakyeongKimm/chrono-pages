@@ -204,6 +204,27 @@
     background-color: hsl(var(--page-accent-light) / 0.3);
     color: hsl(var(--page-accent));
   }
+
+  .memory-card {
+    @apply min-w-[160px] h-72 flex items-center justify-center p-6 rounded-2xl cursor-pointer transition-all duration-300;
+    background-color: hsl(var(--page-accent-light) / 0.2);
+    border: 2px solid hsl(var(--page-accent-light) / 0.4);
+  }
+
+  .memory-card:hover {
+    background-color: hsl(var(--page-accent-light) / 0.3);
+    box-shadow: 0 8px 16px hsl(var(--page-accent) / 0.2);
+  }
+
+  .memory-card.revealed {
+    background-color: hsl(var(--page-accent-light) / 0.4);
+    border-color: hsl(var(--page-accent) / 0.5);
+  }
+
+  .memory-card p {
+    color: hsl(var(--page-text));
+    text-align: center;
+  }
 }
 
 @layer utilities {

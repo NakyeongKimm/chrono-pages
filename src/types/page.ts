@@ -3,6 +3,7 @@ export type Theme = "past" | "present" | "future" | "welcome";
 export interface TofuDish {
   name: string;
   image: string;
+  url?: string;
 }
 
 export interface PageData {

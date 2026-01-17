@@ -30,14 +30,13 @@ export const pagesData: PageData[] = [
     id: 3,
     theme: "past",
     title: "Memory from",
-    highlightedWord: "January 16th, 2018",
+    highlightedWord: "January 17th, 2018",
     imageUrl: family,
   },
   {
     id: 4,
     theme: "past",
     title: "Do you remember ...",
-    imageUrl: family,
     prompts: [
       "where we went for dinner?",
       "what we bought at Disneyland?",
@@ -75,7 +74,7 @@ export const pagesData: PageData[] = [
       { name: "Tahu Goreng", image: tofu3 },
       { name: "Tofu Tikka Masala", image: tofu4 },
       { name: "Tofu Lasagna", image: tofu5 },
-      { name: "Tofu Steak", image: tofu6 },
+      { name: "Tofu Steak", image: tofu6, url: "https://cookingwithayeh.com/tofu-steak/" },
     ],
   },
   {
