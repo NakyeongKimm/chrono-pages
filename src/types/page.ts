@@ -2,7 +2,7 @@ export type Theme = "past" | "present" | "future" | "welcome";
 
 export interface Dish {
   name: string;
-  image: string;
+  image?: string;
   url?: string;
 }
 
